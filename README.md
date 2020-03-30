@@ -1,4 +1,4 @@
 # Swagger-JSON-Schema-In-YAML
 This script generates JSON schema in YAML format that is used in application like Swagger.
 
-Goto: https://bikcrum.github.io/Swagger-JSON-Schema-In-YAML_webversion/ and do it in browser.
+Goto: https://ASHISHTOM.github.io/test_frontend/ and do it in browser.
