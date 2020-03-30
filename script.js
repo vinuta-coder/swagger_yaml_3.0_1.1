@@ -101,7 +101,7 @@ components:
   schemas:
     `+ model + `:`;
 
-        write(header);
+    '  ' + write(header);
 
 }
 
