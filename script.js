@@ -1,3 +1,4 @@
+
 function submit() {
     let s = document.getElementById("json_data").value;
     let path = document.getElementById("path").value;
@@ -64,44 +65,39 @@ function write(s) {
 function writeHead(path, tag, model, type) {
 
 
-    var header = `swagger: '3.0.0'
+    var header = `swagger: '2.0'
 info:
   version: 1.0.0
   title: Swagger Api
-
+host: 10.0.0.69:8080
+basePath: /OM
 tags:
   - name: `+ tag + `
-    description: Everything about `+ tag + `
-    externalDocs:
-      description: Find out more
-      url: 'http://10.0.0.69:9999/swagger/'
-servers:
-  - url: http://10.0.0.69:8080/OM
+schemes:
+  - https
+  - http
 paths:
   /`+ path + `:
     `+ type + `:
       tags:
         - `+ tag + `
-      summary: Add a operation
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/`+ model + `'
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          required: true
+          schema:
+            $ref: '#/definitions/`+ model + `'
       responses:
-          '200':
-            description: successful operation
-            content:
-              application/json:
-                schema:
-                  $ref: '#/components/schemas/`+ model + `_response'
-          '405':
-            description: Invalid input
-components:
-  schemas:
-    `+ model + `:`;
+        '405':
+          description: Invalid input
+definitions:
+  `+ model + `:`;
 
-      write(header);
+    write(header);
 
 }
 
