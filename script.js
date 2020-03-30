@@ -98,10 +98,9 @@ paths:
           '405':
             description: Invalid input
 components:
-    schemas:
-        `+ model + `:`;
-            write(header);
-   
+  schemas:
+    `+ model + `:`;
+      write(header);
 
 }
 
