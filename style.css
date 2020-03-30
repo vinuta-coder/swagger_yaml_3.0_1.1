@@ -1,11 +1,30 @@
 * {
     box-sizing: border-box;
 }
+.green{
+    color: green;
+
+}
+.wow_hero{
+    height: 7vh;
+}
+.params{
+    height: 4vh;
+}
+.wow_hero h1 {
+    font-weight: 300;
+     margin-block-start: 0.07em;
+    margin-block-end: 0.07em;
+}
 
 .column {
     float: left;
     width: 50%;
-    height: 400px;
+    height: 100%;
+}
+.header {
+    float: left;
+    width: 25%;
 }
 
 /* Clear floats after the columns */
@@ -15,6 +34,33 @@
     clear: both;
 }
 
+input[type="button"] {
+   background: #009688;
+    color: white;
+    width: 198%;
+    border: none;
+    text-align: center;
+    height: 4vh;
+}
+select#type {
+    width: 50%;
+    #color: white;
+    #background-color: #009688;
+    border: none;
+    #height: 35px;
+}
+label{
+    color: black;
+    font-weight: 300;
+}
+
+
 textarea{
     resize: none;
+    width: 98%;
+    height: 75vh;
+}
+.footer{
+     text-align: center;
+  font-weight: 100;
 }
