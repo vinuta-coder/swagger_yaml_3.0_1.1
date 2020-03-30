@@ -64,7 +64,7 @@ function write(s) {
 function writeHead(path, tag, model, type) {
 
 
-    var header = `swagger: '3.0.0'
+    var header = `openapi: '3.0.0'
 info:
   version: 1.0.0
   title: Swagger Api
@@ -101,7 +101,7 @@ components:
   schemas:
     `+ model + `:`;
 
-      write(header);
+        write(header);
 
 }
 
