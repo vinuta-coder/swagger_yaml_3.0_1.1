@@ -97,9 +97,11 @@ paths:
                   $ref: '#/components/schemas/`+ model + `_response'
           '405':
             description: Invalid input
-definitions:
-  `+ model + `:`;
-    write(header);
+components:
+    schemas:
+        `+ model + `:`;
+            write(header);
+   
 
 }
 
