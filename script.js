@@ -88,7 +88,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/`+ model + `'
-      responses:
+      response:
           '200':
             description: successful operation
             content:
