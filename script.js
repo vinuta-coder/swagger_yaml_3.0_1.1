@@ -13,7 +13,7 @@ function submit() {
             document.getElementById('yaml_out').value = '';
             let json_object = JSON.parse(s);
             writeHead(path, tag, model, type);
-            parse(json_object, '    ');
+            parse(json_object, '      ');
         } catch (e) {
             document.getElementById('yaml_out').value = e;
         }
