@@ -2,7 +2,7 @@
     box-sizing: border-box;
 }
 .green{
-    color: green;
+    color: rgb(18, 156, 103);
 
 }
 .wow_hero{
@@ -35,7 +35,7 @@
 }
 
 input[type="button"] {
-   background: #009688;
+   background: #b61493;
     color: white;
     width: 198%;
     border: none;
