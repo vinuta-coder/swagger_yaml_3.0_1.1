@@ -44,6 +44,8 @@ function parse(s, indent) {
         if (isEmpty(s)) {
             return;
         }
+        write(indent + 'required:');
+        write(indent + '  '+'-  ""');
         write(indent + 'properties:');
         for (let key in s) {
             write(indent + '  ' + key + ':');
