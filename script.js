@@ -52,9 +52,12 @@ function parse(s, indent) {
             if (s.hasOwnProperty(key)) {
                 parse(s[key], indent + '    ');
             }
+            
         }
     } else {
         write(indent + 'type: \"' + (typeof s) + '\"');
+        write(indent + 'default:' + ' '+(s) );
+        write(indent + 'description:'+' '+'\""')
     }
 }
 
