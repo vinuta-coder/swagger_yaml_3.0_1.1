@@ -56,7 +56,7 @@ function parse(s, indent) {
         }
     } else {
         write(indent + 'type: \"' + (typeof s) + '\"');
-        write(indent + 'example:' + ' '+('\"'+s+'\"') );
+        write(indent + 'default:' + ' '+(s) );
         write(indent + 'description:'+' '+'\""')
     }
 }
@@ -72,7 +72,7 @@ function writeHead(path, tag, model, type) {
     var header = `openapi: '3.0.0'
 info:
   version: 1.0.0
-  title: Swagger Api
+  title:
 
 tags:
   - name: `+ tag + `
