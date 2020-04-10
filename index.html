@@ -7,10 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script type="text/javascript" src="script.js"></script>
     <link rel="stylesheet" href="style.css">
-  <!--  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>-->
-    <script src= 
-"https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"> 
-	</script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 </head>
 
 <body>
@@ -45,84 +42,74 @@
     <div class="row">
         <div class="column">
             <h3></h3>
-           
-                    <div class="tableDiv">
-                        <p id = "GFG_UP" style = "font-size: 15px; font-weight: bold;"> </p>
-                        <button id ="jsonButton" style="display: none"onclick = "constructTable('#table')">click here to get the      values </button>
-                                        <br><br>
-                        <table align = "center"id="table" border="0"> </table> 
-                    </div>
-          
-                     <input type="button" value="convert" onclick="submit()">
+           <!-- <textarea title="JSON Input" id="json_data"  ></textarea>-->
+            <div class="tableDiv">
+                <table id="jsonTable" border='0'>
+                            <tr>
+                                <th style="display: none">Checkbox</th>
+                                 <th style="display: none">JSON</th>
+                            </tr>
+                            <tbody>
+                                <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td>{ "name":"John", "age":30, "car":benz }</td>
+                                
+                                </tr>
+                    
+                            </tbody>
+                    
+                        </table>
             
+            </div>
+            <input type="button" value="convert" onclick="submit()">
         </div>
-        
         <div class="column">
             <h3></h3>
             <textarea title="YAML Output" id="yaml_out"  ></textarea>
         </div>
-        
     </div>
- <div class="footer">
+<div class="footer">
     <a>© 2020 powerd by GitHub, Inc. Editted By Subin & Ashish  </a>
     </div>
     
-<script>
-    $(document).ready(function(){
-      $("#jsonButton")[0].click();// always the button is clicked
-}); 
+                <script>
 
-        
-        var el_up = document.getElementById("GFG_UP"); 
-		var list = [ 
-			{ "col_1": "val_11", "col_3": "val_13" } 	
-		]; 
-		
-		el_up.innerHTML = "Showing " 
-				+ "list of values from the JSON data.<br><br>"  
-				+ JSON.stringify(list[0]); 
-			
-		function constructTable(selector) { 	//this function is called onclick of jsonButton
-			// Getting the all column names 
-			var cols = Headers(list, selector); 
-			// Traversing the JSON data 
-			for (var i = 0; i < list.length; i++) { 
-				var row = $('<tr/>'); 
-				for (var colIndex = 0; colIndex < cols.length; colIndex++) 
-				{ 
-					var val = list[i][cols[colIndex]]; 
-					// If there is any key, which is matching 
-					// with the column name 
-					if (val == null) val = ""; 
-						row.append("<tr><td><input type=\"checkbox\"></td><td>" +'"' + val + '"' + "</td></tr>"); 
-				} //above code to append checkbox and json values
-				// Adding each row to the table 
-				$(selector).append(row); 
-			} 
-		} 
-		
-		function Headers(list, selector) { //this function is used to get column headers
-			var columns = []; 
-			var header = $('<tr/>'); 
-			for (var i = 0; i < list.length; i++) { 
-				var row = list[i]; 
-				
-				for (var k in row) { 
-					if ($.inArray(k, columns) == -1) { 
-						columns.push(k); 
-						
-						// Creating the header ...no need for us
-						/*header.append($('<tr/><td/>').html("<input type=\"checkbox\">"));*/ 
-					} 
-				} 
-			} 
-			
-			// Appending the header to the table 
-			$(selector).append(header); 
-				return columns; 
-		}	  
- </script>
+                    
+                $(document).ready(function(){
 
+                jQuery.support.cors = true;
+
+                $.ajax(
+                {
+                    type: "GET",
+                    url: "",
+                    data: "{}",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    cache: false,
+                    success: function (data) {
+
+                    var trHTML = '';
+
+                    $.each(data, function (i, item) {
+
+                        trHTML += '<tr><td>' + "<input type=\"checkbox\" class=\"jsonCheckbox\" + '</td><td>' +  + '</td></tr>';
+                    });
+
+                    $('#jsonTable').append(trHTML);
+
+                    },
+
+                    error: function (msg) {
+
+                        alert(msg.responseText);
+                    }
+                });
+            })
+
+            </script>
+
+    
 
 </body>
     
