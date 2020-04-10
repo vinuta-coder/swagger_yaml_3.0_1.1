@@ -44,8 +44,15 @@ function parse(s, indent) {
         if (isEmpty(s)) {
             return;
         }
-        write(indent + 'required:');
-        write(indent + '  '+'-  ""');
+        //write(indent + 'required:');
+        //write(indent + '  '+'-  ""');
+        write(indent + 'required:');  
+	        for (let key in s) {
+            var regex = new RegExp("1");
+            if (regex.test(key)){
+              write(indent + '  ' + '-  "'+ key + '"');
+            }
+        }
         write(indent + 'properties:');
         for (let key in s) {
             write(indent + '  ' + key + ':');
@@ -56,7 +63,7 @@ function parse(s, indent) {
         }
     } else {
         write(indent + 'type: \"' + (typeof s) + '\"');
-        write(indent + 'default:' + ' '+(s) );
+        write(indent + 'example:' + ' '+(s) );
         write(indent + 'description:'+' '+'\""')
     }
 }
