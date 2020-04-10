@@ -48,7 +48,7 @@ function parse(s, indent) {
         //write(indent + '  '+'-  ""');
         write(indent + 'required:');  
 	for (let key in s) {
-            var regex = new RegExp("0");
+            var regex = new RegExp(" ");
             if (regex.test(key)){
               write(indent + '  ' + '-  "'+ key + '"');
             }
