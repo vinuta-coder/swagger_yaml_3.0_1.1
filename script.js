@@ -63,7 +63,7 @@ function parse(s, indent) {
         }
     } else {
         write(indent + 'type: \"' + (typeof s) + '\"');
-        write(indent + 'example:' + ' '+(s) );
+        write(indent + 'example:' + ' '+'\"'+(s)+'\"' );
         write(indent + 'description:'+' '+'\""')
     }
 }
@@ -78,17 +78,15 @@ function writeHead(path, tag, model, type) {
 
     var header = `openapi: '3.0.0'
 info:
-  version: 1.0.0
+  version:
   title:
+  description:
 
 tags:
   - name: `+ tag + `
     description: Everything about `+ tag + `
-    externalDocs:
-      description: Find out more
-      url: 'http://10.0.0.69:9999/swagger/'
 servers:
-  - url: http://10.0.0.69:8080/OM
+  - url: http://10.0.14.19:8084/OM
 paths:
   /`+ path + `:
     `+ type + `:
