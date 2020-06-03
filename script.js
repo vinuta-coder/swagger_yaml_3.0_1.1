@@ -14,7 +14,7 @@ function submit() {
             document.getElementById('yaml_out').value = '';
             let json_object = JSON.parse(s);
             writeHead(path, tag, model, type);
-            parse(json_object, '    ',generateMap(metadata));
+            parse(json_object, '    ');
         } catch (e) {
             document.getElementById('yaml_out').value = e;
         }
@@ -33,7 +33,7 @@ function isEmpty(obj) {
 function generateMap(metadata){
   var descriptionMap= new Map(); 
   var lengthMap= new Map(); 
-  console.log(metadata);
+  //console.log(metadata);
   if(!(metadata === "")){
     metadata.split("\n").forEach(function(myString) {
       var array = myString.split("|");
@@ -44,14 +44,14 @@ function generateMap(metadata){
         lengthMap.set(array[0],array[2]);
       }
     });
-    console.log(descriptionMap);
+    //console.log(descriptionMap);
   }
   return [descriptionMap,lengthMap]
 }
 
-function parse(s, indent,metadata) {
-    console.log(metadata[0])
-    console.log(metadata[1])
+function parse(s, indent) {
+    //console.log(metadata[0])
+    //console.log(metadata[1])
     if (Array.isArray(s)) {
         write(indent + 'type: \"array\"');
         write(indent + 'items:');
@@ -91,7 +91,7 @@ function parse(s, indent,metadata) {
     } else {
         write(indent + 'type: \"' + (typeof s) + '\"');
         write(indent + 'example:' + ' '+'\"'+(s)+'\"' );
-	
+	write(indent + 'maxLength:'+' '+'\""');
         write(indent + 'description:'+' '+'\""')
     }
 }
