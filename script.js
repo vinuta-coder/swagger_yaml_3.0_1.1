@@ -4,7 +4,6 @@ function submit() {
     let tag = document.getElementById("tag").value;
     let model = document.getElementById("model").value;
     let type = document.getElementById("type").value;
-    let metadata=document.getElementById("metadata").value;
 
     if (!validateForm(s, path, tag, model, type)) {
         document.getElementById('yaml_out').value = 'Please Fill All Required Field';
@@ -14,7 +13,7 @@ function submit() {
             document.getElementById('yaml_out').value = '';
             let json_object = JSON.parse(s);
             writeHead(path, tag, model, type);
-            parse(json_object, '       ');
+            parse(json_object, '      ');
         } catch (e) {
             document.getElementById('yaml_out').value = e;
         }
@@ -30,28 +29,8 @@ function isEmpty(obj) {
     return JSON.stringify(obj) === JSON.stringify({});
 }
 
-function generateMap(metadata){
-  var descriptionMap= new Map(); 
-  var lengthMap= new Map(); 
-  //console.log(metadata);
-  if(!(metadata === "")){
-    metadata.split("\n").forEach(function(myString) {
-      var array = myString.split("|");
-      if(!(array[1]==="")){
-        descriptionMap.set(array[0],array[1]);
-      }
-      if(!(array[2]==="")){
-        lengthMap.set(array[0],array[2]);
-      }
-    });
-    //console.log(descriptionMap);
-  }
-  return [descriptionMap,lengthMap]
-}
-
 function parse(s, indent) {
-    //console.log(metadata[0])
-    //console.log(metadata[1])
+
     if (Array.isArray(s)) {
         write(indent + 'type: \"array\"');
         write(indent + 'items:');
@@ -90,7 +69,6 @@ function parse(s, indent) {
         }
     } else {
         write(indent + 'type: \"' + (typeof s) + '\"');
-	write(indent + 'maxLength:'+' '+'\""');
         write(indent + 'example:' + ' '+'\"'+(s)+'\"' );
         write(indent + 'description:'+' '+'\""')
     }
@@ -109,7 +87,6 @@ info:
   version:
   title:
   description:
-
 tags:
   - name: `+ tag + `
     description: Everything about `+ tag + `
@@ -122,7 +99,6 @@ paths:
         - `+ tag + `
       summary: Add a operation
       requestBody:
-	description: JSON structure with the data for
         content:
           application/json:
             schema:
