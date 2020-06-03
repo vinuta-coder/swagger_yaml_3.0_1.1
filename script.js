@@ -68,10 +68,10 @@ function parse(s, indent) {
             
         }
     } else {
-        write(indent + 'type: \' + (typeof s) + '\');
+        write(indent + 'type: \"' + (typeof s) + '\"');
 	write(indent + 'maxLength:'+' ');   
-        write(indent + 'example:' + ' '+'\'+(s)+'\' );
-        write(indent + 'description:'+' '+'\')
+        write(indent + 'example:' + ' '+'\"'+(s)+'\"' );
+        write(indent + 'description:'+' '+'\""')
     }
 }
 
