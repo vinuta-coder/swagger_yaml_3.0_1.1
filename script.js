@@ -85,9 +85,9 @@ function writeHead(path, tag, model, type) {
 
     var header = `openapi: '3.0.0'
 info:
-  version:
-  title:
-  description:
+  version: 14.0.0
+  title: 6D COM API
+  description: This API is used to
 tags:
   - name: `+ tag + `
     description: Everything about `+ tag + `
